@@ -36,3 +36,48 @@
     transform: rotate(360deg);
   }
 }
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.bar {
+  fill: #69b3a2;
+}
+
+input[type="range"] {
+  width: 300px;
+  margin-top: 20px;
+}
+
+.slider-top-left {
+  position: absolute;
+  top: 70px;
+  left: 170px;
+}
+
+.slider-bottom-left {
+  position: absolute;
+  top: 380px;
+  left: 170px;
+}
+.line-chart {
+  margin-top: 40px; /* 向下移动折线图 */
+}
+.pie-chart {
+  margin-top: 20px;
+}
+h1 {
+  text-align: left; /* 或者使用 text-align 调整居中 */
+  margin-left: 70px;  /* 向右移动 50px */
+  font-size: 24px;    /* 可选：调整标题字体大小 */
+  color: #333;        /* 可选：设置标题颜色 */
+}
+#chart-container {
+    margin-top: -40px; /* 向上移动条形图 */
+}
+#tooltip {
+  position: absolute;
+  z-index: 1000; /* 确保在最前层 */
+}
+
