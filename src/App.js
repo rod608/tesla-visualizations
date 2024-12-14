@@ -3,7 +3,7 @@ import "./App.css";
 
 import WheelSalesPieChart from "./components/WheelSalesPieChart";
 import ModelSalesPieChart from "./components/ModelSalesPieChart";
-import TeslaSalesPieChart from "./components/TeslaSalesPieChart";
+import TeslaSalesBarChart from "./components/TeslaSalesBarChart";
 
 import dataset from "./data/dataset.csv";
 
@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <div className="App" style={{ display: "flex" }}>
         <div style={{ width: "600px" }}>
-          <TeslaSalesPieChart data={dataset} />
+          <TeslaSalesBarChart data={dataset} />
         </div>
 
         <div style={{ marginLeft: "50px" }}>
