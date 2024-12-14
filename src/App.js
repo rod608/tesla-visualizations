@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
-
-import WheelSalesPieChart from "./components/WheelSalesPieChart";
-import ModelSalesPieChart from "./components/ModelSalesPieChart";
-import TeslaSalesBarChart from "./components/TeslaSalesBarChart";
-
 import dataset from "./data/dataset.csv";
+
+import TeslaSalesBarChart from "./components/TeslaSalesBarChart";
+import ModelSalesPieChart from "./components/ModelSalesPieChart";
+import WheelSalesPieChart from "./components/WheelSalesPieChart";
 
 class App extends Component {
   render() {
@@ -24,7 +23,7 @@ class App extends Component {
 
         <div>
           <h2>Wheels Proportion</h2>
-          <WheelSalesPieChart />
+          <WheelSalesPieChart data={dataset} />
         </div>
       </div>
     );

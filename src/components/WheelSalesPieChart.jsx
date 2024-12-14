@@ -1,13 +1,11 @@
 import { useEffect, useRef } from "react";
 import * as d3 from "d3";
-import tesla_sales from "../data/dataset.csv";
 
-const WheelsPieChart = () => {
+const WheelsSalesPieChart = ({ data }) => {
   const chartRef = useRef();
 
   useEffect(() => {
-    d3.csv(tesla_sales).then((data) => {
-      console.log(data);
+    d3.csv(data).then((data) => {
       const wheelCounts = d3.rollup(
         data,
         (v) => v.length,
@@ -31,11 +29,11 @@ const WheelsPieChart = () => {
         topWheels.push({ wheel: "Others", count: otherWheelsCount });
       }
 
-      const width = 800, // Increased width to accommodate legend
+      const width = 800,
         height = 450,
         margin = 40;
 
-      const radius = Math.min(width - 200, height) / 2 - margin; // Adjusted radius calculation
+      const radius = Math.min(width - 200, height) / 2 - margin;
 
       d3.select(chartRef.current).selectAll("*").remove();
 
@@ -46,7 +44,7 @@ const WheelsPieChart = () => {
 
       const pieGroup = svg
         .append("g")
-        .attr("transform", `translate(${(width - 200) / 2},${height / 2})`); // Adjusted pie chart position
+        .attr("transform", `translate(${(width - 200) / 2},${height / 2})`);
 
       const color = d3
         .scaleOrdinal()
@@ -69,13 +67,12 @@ const WheelsPieChart = () => {
         .attr("stroke", "white")
         .style("stroke-width", "2px");
 
-      // Add a legend
       const legendGroup = svg
         .append("g")
         .attr(
           "transform",
           `translate(${width - 220}, ${height / 2 - topWheels.length * 10})`
-        ); // Adjusted legend position
+        );
 
       const legend = legendGroup
         .selectAll(".legend-item")
@@ -85,7 +82,6 @@ const WheelsPieChart = () => {
         .attr("class", "legend-item")
         .attr("transform", (d, i) => `translate(0, ${i * 20})`);
 
-      // Add legend color boxes
       legend
         .append("rect")
         .attr("x", 0)
@@ -94,7 +90,6 @@ const WheelsPieChart = () => {
         .attr("height", 15)
         .attr("fill", (d) => color(d.wheel));
 
-      // Add legend text
       legend
         .append("text")
         .attr("x", 20)
@@ -102,7 +97,6 @@ const WheelsPieChart = () => {
         .style("font-size", "12px")
         .text((d) => `${capitalizeAndReplace(d.wheel)}: ${d.count}`);
 
-      // Tooltip
       const tooltip = d3
         .select("body")
         .append("div")
@@ -118,14 +112,12 @@ const WheelsPieChart = () => {
         .on("mouseover", function (event, d) {
           tooltip.style("visibility", "visible");
 
-          // Filter data for the selected wheel size
           const filteredData = data.filter(
             (row) =>
               typeof row.wheels === "string" &&
               row.wheels.trim() === d.data.wheel
           );
 
-          // Aggregate data by year
           const yearCounts = d3.rollup(
             filteredData,
             (v) => v.length,
@@ -137,13 +129,11 @@ const WheelsPieChart = () => {
             count,
           }));
 
-          // Sort yearArray by year
           yearArray.sort((a, b) => a.year - b.year);
 
           tooltip.selectAll("*").remove();
 
           if (d.data.wheel !== "Others") {
-            // Create bar chart data
             const miniWidth = 200;
             const miniHeight = 100;
             const miniMargin = { top: 10, right: 10, bottom: 30, left: 30 };
@@ -204,7 +194,7 @@ const WheelsPieChart = () => {
           tooltip.style("visibility", "hidden");
         });
     });
-  }, []);
+  }, [data]);
 
   const capitalizeAndReplace = (str) => {
     if (typeof str !== "string") {
@@ -228,4 +218,4 @@ const WheelsPieChart = () => {
   return <svg ref={chartRef}></svg>;
 };
 
-export default WheelsPieChart;
+export default WheelsSalesPieChart;
