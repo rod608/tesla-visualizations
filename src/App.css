@@ -1,8 +1,14 @@
 .App {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  height: 100vh;
+  height: 90vh;
   align-items: center;
+}
+
+h1 {
+  margin-bottom: 0;
+  height: 10vh;
+  text-align: center;
 }
 
 h2 {
