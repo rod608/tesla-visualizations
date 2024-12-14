@@ -13,14 +13,12 @@ class TeslaSalesPieChart extends Component {
 
   componentDidMount() {
     d3.csv(this.props.data).then((data) => {
-      const parseDate = d3.timeParse("%Y/%m/%d");
+      const parseDate = d3.timeParse("%Y-%m-%d");
       const parsedData = data.map((d) => ({
         Date: parseDate(d.sold_date),
         Day: parseDate(d.sold_date).getDate(),
-        Sales: +d.sales_count,
+        Sales: +d.sold_price,
         model: d.model,
-        week: +d.week,
-        week_count: +d.week_count,
       }));
 
       this.setState({
@@ -87,6 +85,17 @@ class TeslaSalesPieChart extends Component {
       .attr("class", "y-axis")
       .call(d3.axisLeft(y));
 
+    const tooltip = d3
+      .select("body")
+      .append("div")
+      .style("position", "absolute")
+      .style("visibility", "hidden")
+      .style("background", "#fff")
+      .style("border", "1px solid #ccc")
+      .style("padding", "10px")
+      .style("border-radius", "5px")
+      .style("box-shadow", "0 0 10px rgba(0,0,0,0.1)");
+
     svg
       .selectAll(".bar")
       .data(filteredData)
@@ -96,7 +105,21 @@ class TeslaSalesPieChart extends Component {
       .attr("y", (d) => y(d.Sales))
       .attr("width", x.bandwidth())
       .attr("height", (d) => innerHeight - y(d.Sales))
-      .attr("fill", "#69b3a2");
+      .attr("fill", "#69b3a2")
+      .on("mouseover", function (event, d) {
+        tooltip.style("visibility", "visible");
+        tooltip.html(
+          `Date: ${d.Date.toLocaleDateString()}<br>Sales: $${d.Sales.toLocaleString()}`
+        );
+      })
+      .on("mousemove", function (event) {
+        tooltip
+          .style("top", event.pageY - 10 + "px")
+          .style("left", event.pageX + 10 + "px");
+      })
+      .on("mouseout", function () {
+        tooltip.style("visibility", "hidden");
+      });
 
     const minDay = d3.min(originalData, (d) => d.Day);
     const maxDay = d3.max(originalData, (d) => d.Day);
