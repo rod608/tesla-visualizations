@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import * as d3 from "d3";
 import { sliderBottom } from "d3-simple-slider";
 
-class TeslaSalesPieChart extends Component {
+class TeslaSalesBarChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,7 +41,7 @@ class TeslaSalesPieChart extends Component {
       return;
     }
 
-    const margin = { top: 20, right: 30, bottom: 50, left: 80 };
+    const margin = { top: 20, right: 0, bottom: 50, left: 80 };
     const width = 600;
     const height = 400;
     const innerWidth = width - margin.left - margin.right;
@@ -76,14 +76,29 @@ class TeslaSalesPieChart extends Component {
       .join("g")
       .attr("class", "x-axis")
       .attr("transform", `translate(0,${innerHeight})`)
-      .call(d3.axisBottom(x));
+      .call(d3.axisBottom(x))
+      .append("text")
+      .attr("class", "axis-label")
+      .attr("x", innerWidth / 2)
+      .attr("y", margin.bottom - 10)
+      .attr("fill", "black")
+      .style("text-anchor", "middle")
+      .text("Day");
 
     svg
       .selectAll(".y-axis")
       .data([null])
       .join("g")
       .attr("class", "y-axis")
-      .call(d3.axisLeft(y));
+      .call(d3.axisLeft(y))
+      .append("text")
+      .attr("class", "axis-label")
+      .attr("x", -innerHeight / 2)
+      .attr("y", -margin.left + 20)
+      .attr("fill", "black")
+      .attr("transform", "rotate(-90)")
+      .style("text-anchor", "middle")
+      .text("Sales");
 
     const tooltip = d3
       .select("body")
@@ -167,4 +182,4 @@ class TeslaSalesPieChart extends Component {
   }
 }
 
-export default TeslaSalesPieChart;
+export default TeslaSalesBarChart;
