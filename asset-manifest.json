@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/tesla-visualizations/static/css/main.93af4625.css",
+    "main.js": "/tesla-visualizations/static/js/main.5f8808a1.js",
+    "static/js/453.0eb071ea.chunk.js": "/tesla-visualizations/static/js/453.0eb071ea.chunk.js",
+    "static/media/dataset.csv": "/tesla-visualizations/static/media/dataset.2559f95e087a16acfba7.csv",
+    "index.html": "/tesla-visualizations/index.html",
+    "main.93af4625.css.map": "/tesla-visualizations/static/css/main.93af4625.css.map",
+    "main.5f8808a1.js.map": "/tesla-visualizations/static/js/main.5f8808a1.js.map",
+    "453.0eb071ea.chunk.js.map": "/tesla-visualizations/static/js/453.0eb071ea.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.93af4625.css",
+    "static/js/main.5f8808a1.js"
+  ]
+}
