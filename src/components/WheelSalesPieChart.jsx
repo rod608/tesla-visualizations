@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import * as d3 from "d3";
-import tesla_sales from "./data/dataset.csv";
+import tesla_sales from "../data/dataset.csv";
 
 const WheelsPieChart = () => {
   const chartRef = useRef();
