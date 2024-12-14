@@ -5,14 +5,14 @@ import WheelSalesPieChart from "./components/WheelSalesPieChart";
 import ModelSalesPieChart from "./components/ModelSalesPieChart";
 import TeslaSalesPieChart from "./components/TeslaSalesPieChart";
 
-import tesla_sales from "./tesla_sales.csv";
+import dataset from "./data/dataset.csv";
 
 class App extends Component {
   render() {
     return (
       <div className="App" style={{ display: "flex" }}>
         <div style={{ width: "600px" }}>
-          <TeslaSalesPieChart data={tesla_sales} />
+          <TeslaSalesPieChart data={dataset} />
         </div>
 
         <div style={{ marginLeft: "50px" }}>
@@ -26,7 +26,7 @@ class App extends Component {
           <h2>Wheels Proportion</h2>
           <WheelSalesPieChart />
         </div>
-        
+
         <div
           id="tooltip"
           style={{
