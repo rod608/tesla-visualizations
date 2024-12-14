@@ -56,18 +56,6 @@ class ModelSalesPieChart extends Component {
       .attr("stroke", "white")
       .style("stroke-width", "2px");
 
-    svg
-      .selectAll("text")
-      .data(pie(pieData))
-      .join("text")
-      .text((d) => `${d.data.model}: ${d.data.count}`)
-      .attr("transform", (d) => {
-        const [x, y] = arc.centroid(d);
-        return `translate(${x}, ${y})`;
-      })
-      .style("text-anchor", "middle")
-      .style("font-size", "12px");
-
     const legendGroup = svg
       .append("g")
       .attr(
