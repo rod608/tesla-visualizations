@@ -153,8 +153,13 @@ class TeslaSalesPieChart extends Component {
 
   render() {
     return (
-      <div>
-        <h1 style={{ textAlign: "left" }}>Tesla Sales per Day</h1>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <svg className="slider-range"></svg>
         <div id="chart-container"></div>
       </div>

@@ -10,14 +10,13 @@ class App extends Component {
   render() {
     return (
       <div className="App" style={{ display: "flex" }}>
-        <div style={{ width: "600px" }}>
+        <div>
+          <h2>Tesla Sales per Day</h2>
           <TeslaSalesBarChart data={dataset} />
         </div>
 
-        <div style={{ marginLeft: "50px" }}>
-          <h2 style={{ textAlign: "center", marginLeft: "-170px" }}>
-            Model Proportion
-          </h2>
+        <div>
+          <h2>Model Proportion</h2>
           <ModelSalesPieChart data={dataset} />
         </div>
 
