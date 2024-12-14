@@ -26,22 +26,6 @@ class App extends Component {
           <h2>Wheels Proportion</h2>
           <WheelSalesPieChart />
         </div>
-
-        <div
-          id="tooltip"
-          style={{
-            position: "absolute",
-            opacity: 0,
-            pointerEvents: "none",
-            background: "white",
-            border: "1px solid #ccc",
-            borderRadius: "5px",
-            padding: "10px",
-            boxShadow: "0px 4px 10px rgba(0,0,0,0.2)",
-          }}
-        >
-          <svg></svg>
-        </div>
       </div>
     );
   }
