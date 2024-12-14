@@ -129,7 +129,7 @@ class ModelSalesPieChart extends Component {
 
         const miniWidth = 200;
         const miniHeight = 100;
-        const miniMargin = { top: 10, right: 10, bottom: 30, left: 30 };
+        const miniMargin = { top: 10, right: 0, bottom: 30, left: 0 };
 
         const miniSvg = tooltip
           .append("svg")
