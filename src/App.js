@@ -9,7 +9,7 @@ import WheelSalesPieChart from "./components/WheelSalesPieChart";
 class App extends Component {
   render() {
     return (
-      <div className="App" style={{ display: "flex" }}>
+      <div className="App">
         <div>
           <h2>Tesla Sales per Day</h2>
           <TeslaSalesBarChart data={dataset} />
