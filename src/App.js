@@ -19,7 +19,7 @@ class App extends Component {
           <h2 style={{ textAlign: "center", marginLeft: "-170px" }}>
             Model Proportion
           </h2>
-          <ModelSalesPieChart />
+          <ModelSalesPieChart data={dataset} />
         </div>
 
         <div>
