@@ -61,23 +61,28 @@ input[type="range"] {
   top: 380px;
   left: 170px;
 }
+
 .line-chart {
-  margin-top: 40px; /* 向下移动折线图 */
+  margin-top: 40px;
 }
+
 .pie-chart {
   margin-top: 20px;
 }
+
 h1 {
-  text-align: left; /* 或者使用 text-align 调整居中 */
-  margin-left: 70px;  /* 向右移动 50px */
-  font-size: 24px;    /* 可选：调整标题字体大小 */
-  color: #333;        /* 可选：设置标题颜色 */
+  text-align: left;
+  margin-left: 70px;
+  font-size: 24px;
+  color: #333;
 }
+
 #chart-container {
-    margin-top: -40px; /* 向上移动条形图 */
+    margin-top: -40px;
 }
+
 #tooltip {
   position: absolute;
-  z-index: 1000; /* 确保在最前层 */
+  z-index: 1000;
 }
 
